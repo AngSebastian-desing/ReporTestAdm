@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\angel\\source\\repos\\ReporTestAdm\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{79529457-1CB4-4703-BDA8-964B17FCDE06}|ReporTestAdm\\ReporTestAdm.csproj|c:\\users\\angel\\source\\repos\\reportestadm\\reportestadm\\views\\reporte\\list.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{79529457-1CB4-4703-BDA8-964B17FCDE06}|ReporTestAdm\\ReporTestAdm.csproj|solutionrelative:reportestadm\\views\\reporte\\list.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79529457-1CB4-4703-BDA8-964B17FCDE06}|ReporTestAdm\\ReporTestAdm.csproj|c:\\users\\angel\\source\\repos\\reportestadm\\reportestadm\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{79529457-1CB4-4703-BDA8-964B17FCDE06}|ReporTestAdm\\ReporTestAdm.csproj|solutionrelative:reportestadm\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79529457-1CB4-4703-BDA8-964B17FCDE06}|ReporTestAdm\\ReporTestAdm.csproj|c:\\users\\angel\\source\\repos\\reportestadm\\reportestadm\\controllers\\reportecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79529457-1CB4-4703-BDA8-964B17FCDE06}|ReporTestAdm\\ReporTestAdm.csproj|solutionrelative:reportestadm\\controllers\\reportecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\angel\\source\\repos\\ReporTestAdm\\ReporTestAdm\\appsettings.json",
+              "RelativeDocumentMoniker": "ReporTestAdm\\appsettings.json",
+              "ToolTip": "C:\\Users\\angel\\source\\repos\\ReporTestAdm\\ReporTestAdm\\appsettings.json",
+              "RelativeToolTip": "ReporTestAdm\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-07-16T04:33:17.971Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ReporteController.cs",
+              "DocumentMoniker": "C:\\Users\\angel\\source\\repos\\ReporTestAdm\\ReporTestAdm\\Controllers\\ReporteController.cs",
+              "RelativeDocumentMoniker": "ReporTestAdm\\Controllers\\ReporteController.cs",
+              "ToolTip": "C:\\Users\\angel\\source\\repos\\ReporTestAdm\\ReporTestAdm\\Controllers\\ReporteController.cs",
+              "RelativeToolTip": "ReporTestAdm\\Controllers\\ReporteController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T05:42:52.983Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "List.cshtml",
+              "DocumentMoniker": "C:\\Users\\angel\\source\\repos\\ReporTestAdm\\ReporTestAdm\\Views\\Reporte\\List.cshtml",
+              "RelativeDocumentMoniker": "ReporTestAdm\\Views\\Reporte\\List.cshtml",
+              "ToolTip": "C:\\Users\\angel\\source\\repos\\ReporTestAdm\\ReporTestAdm\\Views\\Reporte\\List.cshtml",
+              "RelativeToolTip": "ReporTestAdm\\Views\\Reporte\\List.cshtml",
+              "ViewState": "AQIAACoAAAAAAAAAAAAAADYAAABIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-15T05:42:30.494Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

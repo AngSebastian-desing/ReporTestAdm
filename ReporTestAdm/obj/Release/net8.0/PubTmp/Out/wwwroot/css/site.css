@@ -1,0 +1,62 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.third-size-img {
+    width: 33%;
+    height: auto;
+    max-width: 100%;
+}
+
+.half-size-img {
+    width: 55%;
+    height: auto;
+    max-width: 100%;
+}
+
+.hr-pendiente {
+    border: 4px solid #2B88D0 !important;
+    margin: 8px 0;
+    opacity: 1;
+}
+
+.hr-aceptado {
+    border: 4px solid #008700 !important;
+    margin: 8px 0;
+    opacity: 1;
+}
+
+.hr-rechazado {
+    border: 4px solid #FF2800 !important;
+    margin: 8px 0;
+    opacity: 1;
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.card {
+    height: 100%;
+}

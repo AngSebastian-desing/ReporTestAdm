@@ -1,0 +1,198 @@
+﻿@using ReporTestAdm.Models
+@using System.Text.Json
+@using System.Text.Json.Serialization
+@{
+}
+@model ReporTestAdm.ViewModels.ReportesViewModel
+@{var _reportes = Model.Reportes ?? new List<Reporte>();}
+@{var _usuarios = Model.Usuarios ?? new List<Usuario>();}
+
+<div class="container mt-4">
+    <h2>Lista de reportes</h2>
+    <br />
+
+    <div class="form-group">
+        <label for="selectUsuario">Filtrar por Usuario:</label>
+        <select class="form-control" id="selectUsuario" onchange="filterReports(this.value)">
+            <option value="0" selected>Todos los usuarios</option>
+            @foreach (var usuario in _usuarios)
+            {
+                <option value="@usuario.IdUsuario">@usuario.Nombre @usuario.Apellido</option>
+            }
+        </select>
+
+        <div class="row mt-3">
+            <div class="col-md-4">
+                <label>Nombre:</label>
+                <input id="inputNombre" name="Nombre" class="form-control" disabled />
+            </div>
+            <div class="col-md-4">
+                <label>Apellido:</label>
+                <input id="inputApellido" name="Apellido" class="form-control" disabled />
+            </div>
+            <div class="col-md-2">
+                <label>Edad:</label>
+                <input id="inputEdad" name="Edad" class="form-control" disabled />
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-8">
+                <label>Puesto:</label>
+                <input id="inputPuesto" name="Puesto" class="form-control" disabled />
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        @foreach (var item in _reportes)
+        {
+            <div class="col-md-4 mb-4 report-card" data-userId="@item.IdUsuario">
+                <div class="card">
+                    <img src="@($"data:image;base64,{item.Imagen}")" class="card-img-top mt-3 third-size-img mx-auto d-block " alt="Imagen del reporte">
+                    <div class="card-body">
+                        <hr class="@GetHrClass(@item.Estatus)" />
+                        <h5 class="card-title"><span style="opacity: 0.6;">@item.Folio - </span>@item.Titulo</h5>
+                        <p class="card-text">@item.Descripcion</p>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-@item.Folio">
+                            Ver detalle
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="modal-@item.Folio" tabindex="-1" role="dialog" aria-labelledby="modalLabel-@item.Folio" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalLabel-@item.Folio">@item.Titulo</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p><strong>Folio:</strong> @item.Folio</p>
+                            <p><strong>Descripción:</strong> @item.Descripcion</p>
+                            <p><strong>Fecha:</strong> @item.Fecha</p>
+                            <p><strong>Id Usuario:</strong> @item.IdUsuario</p>
+                            <p><strong>Estatus:</strong> @item.Estatus</p>
+                            <p><strong>Fecha autorización:</strong> @item.Fecha_autorizacion</p>
+                            <p><strong>Usuario gestionó:</strong> @item.Usuario_gestiona</p>
+                            <img src="@($"data:image;base64,{item.Imagen}")" class="img-fluid half-size-img mx-auto d-block" alt="Imagen del reporte">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmReject-@item.Folio">Rechazar</button>
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#confirmAccept-@item.Folio">Aceptar</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Confirm Reject Modal -->
+            <div class="modal fade" id="confirmReject-@item.Folio" tabindex="-1" role="dialog" aria-labelledby="confirmRejectLabel-@item.Folio" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="confirmRejectLabel-@item.Folio">Confirmar Rechazo</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            ¿Estás seguro que deseas rechazar este reporte?
+                        </div>
+                        <div class="modal-footer">
+                            <form asp-controller="Reporte" asp-action="Save" method="post">
+                                <input type="hidden" name="folio" value="@item.Folio" />
+                                <input type="hidden" name="estatus" value="R" />
+                                <button type="submit" class="btn btn-danger">Sí, Rechazar</button>
+                            </form>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Confirm Accept Modal -->
+            <div class="modal fade" id="confirmAccept-@item.Folio" tabindex="-1" role="dialog" aria-labelledby="confirmAcceptLabel-@item.Folio" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="confirmAcceptLabel-@item.Folio">Confirmar Aceptación</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            ¿Estás seguro que deseas aceptar este reporte?
+                        </div>
+                        <div class="modal-footer">
+                            <form asp-controller="Reporte" asp-action="Save" method="post">
+                                <input type="hidden" name="folio" value="@item.Folio" />
+                                <input type="hidden" name="estatus" value="A" />
+                                <button type="submit" class="btn btn-success">Sí, Aceptar</button>
+                            </form>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@functions {
+    public string GetHrClass(string estatus)
+    {
+        return estatus switch
+        {
+            "P" => "hr-pendiente",
+            "A" => "hr-aceptado",
+            "R" => "hr-rechazado",
+            _ => "hr-pendiente"
+        };
+    }
+}
+
+@section Scripts {
+    <script>
+    var usuarios = @Html.Raw(Json.Serialize(Model.Usuarios));
+
+    function filterReports(IdUsuario) {
+        $(".report-card").show();
+
+        if (IdUsuario !== "0") {
+            $(".report-card").each(function () {
+                if ($(this).data("userid") != IdUsuario) {
+                    $(this).hide();
+                }
+            });
+
+            var idUsuarioInt = parseInt(IdUsuario);
+
+            var usuarioSeleccionado = usuarios.find(function (usuario) {
+                return usuario.idUsuario === idUsuarioInt;
+            });
+
+            if (usuarioSeleccionado) {
+                $("#inputNombre").val(usuarioSeleccionado.nombre);
+                $("#inputApellido").val(usuarioSeleccionado.apellido);
+                $("#inputEdad").val(usuarioSeleccionado.edad);
+                $("#inputPuesto").val(usuarioSeleccionado.puesto);
+            } else {
+                console.log("No se encontró el usuario.");
+            }
+        } else {
+            $(".report-card").show();
+            $("#inputNombre").val("");
+            $("#inputApellido").val("");
+            $("#inputEdad").val("");
+            $("#inputPuesto").val("");
+        }
+    }
+</script>
+}
+
+
